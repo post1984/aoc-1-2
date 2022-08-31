@@ -1,6 +1,8 @@
-dist/
-.vscode
-package-lock.json
 .dccache
-node_modules/
+.vscode
+
+package-lock.json
+
 dayBlank/
+dist/
+node_modules/

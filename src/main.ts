@@ -1,9 +1,10 @@
-import { newFlag, parseFlags } from "./flags/flags";
+import { newFlag, parseFlags } from "./flags";
 import { part1 as day1_1, part2 as day1_2 } from "./day1";
 import { part1 as day2_1, part2 as day2_2 } from "./day2";
 import { part1 as day3_1, part2 as day3_2 } from "./day3";
 import { part1 as day4_1, part2 as day4_2 } from "./day4";
 import { part1 as day5_1, part2 as day5_2 } from "./day5";
+import { part1 as day6_1, part2 as day6_2 } from "./day6";
 
 if (process.argv.length === 1) {
     console.error("Expected flags: (d)ay, (p)art");
@@ -27,6 +28,9 @@ if (process.argv.length === 1) {
             break;
         case "5":
             switchPart(flagMap.get("p"), flagMap.get("f"), day5_1, day5_2);
+            break;
+        case "6":
+            switchPart(flagMap.get("p"), flagMap.get("f"), day6_1, day6_2);
             break;
         default:
             console.error(`unhandled day number ${flagMap.get("d")}`);

@@ -6,6 +6,7 @@ import { part1 as day4_1, part2 as day4_2 } from "./day4";
 import { part1 as day5_1, part2 as day5_2 } from "./day5";
 import { part1 as day6_1, part2 as day6_2 } from "./day6";
 import { part1 as day7_1, part2 as day7_2 } from "./day7";
+import { part1 as day8_1, part2 as day8_2 } from "./day8";
 
 if (process.argv.length === 1) {
     console.error("Expected flags: (d)ay, (p)art");
@@ -35,6 +36,9 @@ if (process.argv.length === 1) {
             break;
         case "7":
             switchPart(flagMap.get("p"), flagMap.get("f"), day7_1, day7_2);
+            break;
+        case "8":
+            switchPart(flagMap.get("p"), flagMap.get("f"), day8_1, day8_2);
             break;
         default:
             console.error(`unhandled day number ${flagMap.get("d")}`);

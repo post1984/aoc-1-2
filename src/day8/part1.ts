@@ -14,16 +14,6 @@ interface SevenSegmentDigits {
     nine: string
 }
 
-interface SevenSegment {
-    top: string
-    topLeft: string
-    topRight: string
-    center: string
-    bottomLeft: string
-    bottomRight: string
-    bottom: string
-}
-
 export function readlines(filename: string): string[][][] {
     // split newlines. remove empty lines
     return fs.readFileSync(filename, { encoding: "utf8" }).split(/\r?\n/).filter(Boolean)
@@ -37,21 +27,21 @@ export function readlines(filename: string): string[][][] {
 
 export function part1(filename: string) {
     // GOAL: count all interesting
-    const interesting = [1, 4, 7, 8];
+    const simpleValues = [1, 4, 7, 8];
     // initialize sets that contain all possibilities.
     let lines = readlines(filename);
-    let interestingCounted = 0;
+    let simpleCounted = 0;
     for (let [possibilities, display] of lines) {
         // sort by length and lexicographically
         possibilities = possibilities.sort((a, b) => Math.abs(b.localeCompare(a))).sort((a, b) => a.length - b.length);
         let displayValues = readDisplay(possibilities, display);
         for (let dVal of displayValues) {
-            if (interesting.includes(dVal)) {
-                interestingCounted++;
+            if (simpleValues.includes(dVal)) {
+                simpleCounted++;
             }
         }
     }
-    console.log(interestingCounted);
+    console.log(simpleCounted);
 }
 
 export function readDisplay(possibilities: string[], display: string[]): number[] {
@@ -106,7 +96,6 @@ function generateSegmentMapping(possibilities: string[]): SevenSegmentDigits {
             case 7: // always 8
                 ssd.eight = s;
                 break;
-            // invalid
             default:
                 break;
         }
@@ -130,7 +119,7 @@ function stringIntersect(a: string, ...intersects: string[]): string {
     let result = a;
     for (let ch of a) {
         if (intersects.filter(s => !s.includes(ch)).length > 0) {
-            result = result.replaceAll(ch, "");
+            result = result.replace(ch, "");
         }
     }
     return Array.from(result).sort().join("");
@@ -140,7 +129,7 @@ function stringDifference(a: string, ...differences: string[]): string {
     let result = a;
     for (let diff of differences) {
         for (let ch of diff) {
-            result = result.replaceAll(ch, "");
+            result = result.replace(ch, "");
         }
     }
     return Array.from(result).sort().join("");

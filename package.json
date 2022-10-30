@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "start": "npx tsc && node . -d 8 -p 2 -f src/day8/input.txt",
+    "start": "npx tsc && node . -d 19 -p 1 -f src/day19/example.txt",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
